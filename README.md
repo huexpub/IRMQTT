@@ -11,6 +11,9 @@ https://bbs.iobroker.cn/thread-176-1-1.html
 IRMQTT模块贴：
 https://bbs.iobroker.cn/thread-221-1-1.html
 
+IRMQTT支持列表：
+https://github.com/crankyoldgit/IRremoteESP8266/blob/master/SupportedProtocols.md#ir-protocols-supported-by-this-library
+
 ## 准备工作：
 此次PCB模块为适应更高的通用性，以苹果绿点5V1A充电器为供电对象，最小化PCB板和硬件体积，合体后仅增加7.2mm的高度，一体感非常好!  由于体积定位，元件大量采用0402贴片，PCB面积仅21*20MM。
 
@@ -31,11 +34,11 @@ PCB贴装，请控制好你的烙铁温度，保持300以内，针对发射贴�
 * 保持发射贴片丝印标记正确，除中心发射元件，其它保持45度角以得到更好的发射范围
 * 由于接收元件外露在3D外壳之外，请确保元件正中，否则外壳无法安装
 
-###刷机
+### 刷机
 
 由于空间较小，刷机TTL为4P*1.27MM 故，你需要特殊的工具，比SOP8，SOP16刷机夹，1.27测试针，或者自己焊接线刷机，刷机后，后期均由OTA完成更新！PCB正面，FP脚为0-GND的短接点，短接后，ESP进入下载模式，刷机完成后，请去除短接！
 
-###3D
+### 3D
  3D外壳为上、下沉方式，需要M2沉头螺丝两颗，目前设计的螺丝帽直径最大为4.5MM 沉头内六角螺丝。
  
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-stl.png?raw=true)
@@ -43,21 +46,21 @@ PCB贴装，请控制好你的烙铁温度，保持300以内，针对发射贴�
 ## 安装使用：
 软件采用WIFIMANAGER配网，上电后，搜索IRMQTT热点，连接上，转入配网WEB页面，未弹出请尝试访问192.168.4.1地址
 
-###配网
+### 配网
 
 >请务必保证MQTT服务器地址正确，否则可能无法进入WEB页面，并且无法重新配置！
 
 
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-wifi.gif?raw=true)
 
-###使用
+### 使用
 进入配置的IRMQTT设备IP WEB，页面如下：
 
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-web.gif?raw=true)
 
 选择对应的空调型号，模式，电源，温度，并点击 UPDATE/SEND，空调有反应后，视为有效型号，若无反应，请对应尝试model 1-6子设备型号，如均无反应，可能不被支持。
 
-###反馈
+### 反馈
 如果知道IRMQTT模块是否已经能正常的反馈呢，你可以使用MQTT工具监听。如下图GIF演示！
 
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-mqtt.gif?raw=true)
@@ -66,7 +69,7 @@ PCB贴装，请控制好你的烙铁温度，保持300以内，针对发射贴�
 * 操作之后能出现ON OFF和有效的数据源，视为可反馈，
 * 关于监听工具，你可以使用docker 镜像  huex/webzsh:armbian (https://mysensor.pub/gateway/webzsh/)
 
-###接入
+### 接入
 由于采用标准MQTT协议，并且作者以Homeassistant为蓝本输出消息，故，你可以使用IRMQTT-WEB控制台发送 MQTT discovery 让平台自动发现即可，也可以手动配置，配置如下：
 
 
@@ -124,7 +127,7 @@ climate:
 以下为演示：
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-ota.gif?raw=true)
   
-##SMT开车
+## SMT开车
   此次为了方便各位，目前已经将PCB 容阻元件、三极管、LED、LDO 采用 SMT 小批量产，到手只需要焊接发射元件、接收元件、USB、天线贴片、ESP01，极容易操作的元件部分！方便能DIY并且有3D打印机的小伙伴!
 
  另外为了方便不原折腾的人，需要上成品车的伙伴，你可以直接从淘宝购入成品，并且支持7天无理由和自购运费险，如果不能使用，你可以退货，承担来回运费即可！
@@ -135,7 +138,7 @@ climate:
 *  淘宝不经常在线，如果你有疑问和好的建议尽量在论坛或者ioBroker群MYSENSOR群@HUEX
 
 
-##Q&A
+## Q&A
 
 - 1.购买单PCB文件，我还要购买哪些材料？
 A: 安信可ESP01F 、BOM表中的EVERLIGHT台产亿光 IR26-61C 发射贴片、接收元件H638T ，2.4G天线RFANT3216-Z。

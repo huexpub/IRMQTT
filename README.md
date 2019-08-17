@@ -61,7 +61,7 @@ PCB贴装，请控制好你的烙铁温度，保持300以内，针对发射贴�
 选择对应的空调型号，模式，电源，温度，并点击 UPDATE/SEND，空调有反应后，视为有效型号，若无反应，请对应尝试model 1-6子设备型号，如均无反应，可能不被支持。
 
 ### 反馈
-如果知道IRMQTT模块是否已经能正常的反馈呢，你可以使用MQTT工具监听。如下图GIF演示！
+如何知道IRMQTT模块是否已经能正常的反馈呢，你可以使用MQTT工具监听。如下图GIF演示！
 
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt-mqtt.gif?raw=true)
 
@@ -129,9 +129,7 @@ climate:
   
 ## SMT开车
   此次为了方便各位，目前已经将PCB 容阻元件、三极管、LED、LDO 采用 SMT 小批量产，到手只需要焊接发射元件、接收元件、USB、天线贴片、ESP01，极容易操作的元件部分！方便能DIY并且有3D打印机的小伙伴!
-
- 另外为了方便不原折腾的人，需要上成品车的伙伴，你可以直接从淘宝购入成品，并且支持7天无理由和自购运费险，如果不能使用，你可以退货，承担来回运费即可！
-
+  
 链接：https://item.taobao.com/item.htm?spm=a1z10.1-c.w4023-7677041950.2.57033a0cMouRqm&id=600537216286
 
 *  成品涉及到3D打印，由于打印消耗时间和人工，故发货时间7天内

@@ -1,6 +1,8 @@
 
 ![enter image description here](https://github.com/huexpub/IRMQTT/blob/master/pic/irmqtt.jpg?raw=true)
 
+>>> 2019-08-29更新了可反馈性WEB使用说明及识别品牌
+
 ## 声明：
 1. IRMQTT 是一个开源项目，源代码来自https://github.com/crankyoldgit/IRremoteESP8266，
 2. IRMQTT PCB你可以自由的使用，并且制作分享与朋友交流，但严禁商业行为!
@@ -68,6 +70,91 @@ PCB贴装，请控制好你的烙铁温度，保持300以内，针对发射贴�
 *  默认连接上MQTT后，出来的型号和设备等是默认生成的，不是接收到的
 * 操作之后能出现ON OFF和有效的数据源，视为可反馈，
 * 关于监听工具，你可以使用docker 镜像  huex/webzsh:armbian (https://mysensor.pub/gateway/webzsh/)
+
+
+### 识别
+
+
+```
+enum decode_type_t {
+  UNKNOWN = -1,
+  UNUSED = 0,
+  RC5,
+  RC6,
+  NEC,
+  SONY,
+  PANASONIC,  // (5)
+  JVC,
+  SAMSUNG,
+  WHYNTER,
+  AIWA_RC_T501,
+  LG,  // (10)
+  SANYO,
+  MITSUBISHI,
+  DISH,
+  SHARP,
+  COOLIX,  // (15)
+  DAIKIN,
+  DENON,
+  KELVINATOR,
+  SHERWOOD,
+  MITSUBISHI_AC,  // (20)
+  RCMM,
+  SANYO_LC7461,
+  RC5X,
+  GREE,
+  PRONTO,  // Technically not a protocol, but an encoding. (25)
+  NEC_LIKE,
+  ARGO,
+  TROTEC,
+  NIKAI,
+  RAW,  // Technically not a protocol, but an encoding. (30)
+  GLOBALCACHE,  // Technically not a protocol, but an encoding.
+  TOSHIBA_AC,
+  FUJITSU_AC,
+  MIDEA,
+  MAGIQUEST,  // (35)
+  LASERTAG,
+  CARRIER_AC,
+  HAIER_AC,
+  MITSUBISHI2,
+  HITACHI_AC,  // (40)
+  HITACHI_AC1,
+  HITACHI_AC2,
+  GICABLE,
+  HAIER_AC_YRW02,
+  WHIRLPOOL_AC,  // (45)
+  SAMSUNG_AC,
+  LUTRON,
+  ELECTRA_AC,
+  PANASONIC_AC,
+  PIONEER,  // (50)
+  LG2,
+  MWM,
+  DAIKIN2,
+  VESTEL_AC,
+  TECO,  // (55)
+  SAMSUNG36,
+  TCL112AC,
+  LEGOPF,
+  MITSUBISHI_HEAVY_88,
+  MITSUBISHI_HEAVY_152,  // 60
+  DAIKIN216,
+  SHARP_AC,
+  GOODWEATHER,
+  INAX,
+  DAIKIN160,  // 65
+  NEOCLIMA,
+  DAIKIN176,
+  DAIKIN128,
+  AMCOR,
+  DAIKIN152,  // 70
+  
+```
+
+以上为可识别的代码列表，你可以进入IRMQTT-WEB页面 SYSTEM-INFO页 找到 Last IR Received: 47,0,0 (9 hours 53 minutes 58 seconds ago)
+
+得到47,0,0 代表是得到47序号的对应品牌属性值，对照上文，为LUTRON，部分空调反馈的品牌未必是品牌自身对应，这可能是该品牌有代工或者被代工的。如果是其它家用电器，电视等，这些基本被统一，多数为三星，索尼，松下协议或者标准RC协议不必对照本身品牌！
 
 ### 接入
 由于采用标准MQTT协议，并且作者以Homeassistant为蓝本输出消息，故，你可以使用IRMQTT-WEB控制台发送 MQTT discovery 让平台自动发现即可，也可以手动配置，配置如下：
